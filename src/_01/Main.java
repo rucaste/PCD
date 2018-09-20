@@ -2,22 +2,24 @@ package _01;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String path = System.getProperty("user.dir"); // obtem o diretorio de execucao (raiz do projeto Eclipse)
+        File file = new File("/home/rui/IdeaProjects/PCD/src/_01/pictures");
+        File[] files = file.listFiles();
+        for(File f: files){
+            System.out.println(f.getName());
+        }
 
-        File[] files = new File(path).listFiles(new FileFilter() {
-            public boolean accept(File f) {
-            }
-        });
+        ImageViewer imageViewer = new ImageViewer("Gallery", files);
 
-        System.out.println(files);
-
-
-        ImageViewer imageViewer = new ImageViewer("Gallery");
+        //ImageViewer imageViewer = new ImageViewer("Gallery");
 
     }
 }
